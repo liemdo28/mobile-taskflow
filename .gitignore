@@ -1,0 +1,44 @@
+# Flutter
+.dart_tool/
+.packages
+.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+*.lock
+
+# Android
+android/.gradle/
+android/app/build/
+android/.idea/
+android/app/*.jks
+android/app/*.keystore
+android/app/key.properties
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/build/
+
+# macOS
+.DS_Store
+
+# General
+.idea/
+.vscode/
+*.swp
+*.swo
+*.log
+.env
+.env.local
+.env.production
+
+# Firebase
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+!</android/app/google-services.json.sample
+!</ios/Runner/GoogleService-Info.plist.sample
+
+# Misc
+tmp/
+storage/
