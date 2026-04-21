@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../shared/providers.dart';
 import 'register_page.dart';
 
@@ -90,12 +90,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.error_outline, color: AppColors.error, size: 18),
+                          Icon(Icons.error_outline, color: AppColors.error, size: 18),
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
                               auth.errorMessage!,
-                              style: const TextStyle(color: AppColors.error, fontSize: 13),
+                              style: TextStyle(color: AppColors.error, fontSize: 13),
                             ),
                           ),
                         ],
@@ -302,7 +302,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                       color: AppColors.error.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Text(auth.errorMessage!, style: const TextStyle(color: AppColors.error, fontSize: 13)),
+                    child: Text(auth.errorMessage!, style: TextStyle(color: AppColors.error, fontSize: 13)),
                   ),
 
                 TextFormField(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/theme/app_theme.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/utils/date_utils.dart' as du;
 import '../../../../shared/providers.dart';
 import '../../../../shared/models/models.dart';
@@ -127,14 +127,14 @@ class _NotificationTile extends ConsumerWidget {
             if (notification.message != null && notification.message!.isNotEmpty)
               Text(
                 notification.message!,
-                style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
             const SizedBox(height: 4),
             Text(
               du.DateUtils.timeAgo(notification.createdAt),
-              style: const TextStyle(fontSize: 11, color: AppColors.textTertiary),
+              style: TextStyle(fontSize: 11, color: AppColors.textTertiary),
             ),
           ],
         ),

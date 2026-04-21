@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_theme.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/utils/date_utils.dart' as du;
 import '../../../../shared/models/models.dart';
 
@@ -208,7 +208,7 @@ class _AssigneeAvatar extends StatelessWidget {
         : CircleAvatar(
             radius: 10,
             backgroundColor: AppColors.primary.withOpacity(0.2),
-            child: Text(name[0].toUpperCase(), style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: AppColors.primary)),
+            child: Text(name[0].toUpperCase(), style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: AppColors.primary)),
           );
   }
 }

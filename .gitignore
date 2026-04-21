@@ -42,3 +42,5 @@ ios/Runner/GoogleService-Info.plist
 # Misc
 tmp/
 storage/
+releases/
+android/local.properties

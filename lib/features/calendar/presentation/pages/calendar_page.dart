@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
-import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../shared/providers.dart';
 import '../../../../shared/models/models.dart';
@@ -16,13 +16,20 @@ class CalendarPage extends ConsumerStatefulWidget {
 }
 
 class _CalendarPageState extends ConsumerState<CalendarPage> {
-  late DateTime _focusedMonth;
   DateTime? _selectedDate;
 
   @override
   void initState() {
     super.initState();
-    _focusedMonth = DateTime.now();
+    // Auto-select today's date on first load so tasks are visible immediately
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final now = DateTime.now();
+      final month = ref.read(calendarMonthProvider);
+      // Only auto-select if we're already on the current month
+      if (month.year == now.year && month.month == now.month) {
+        setState(() => _selectedDate = now);
+      }
+    });
   }
 
   @override
@@ -32,7 +39,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_monthLabel()),
+        title: Text(_monthLabel(month)),
         actions: [
           IconButton(
             icon: const Icon(Icons.chevron_left),
@@ -67,16 +74,14 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   }
 
   void _changeMonth(int delta) {
-    setState(() {
-      _focusedMonth = DateTime(_focusedMonth.year, _focusedMonth.month + delta);
-    });
-    ref.read(calendarMonthProvider.notifier).state = _focusedMonth;
+    final current = ref.read(calendarMonthProvider);
+    ref.read(calendarMonthProvider.notifier).state = DateTime(current.year, current.month + delta);
   }
 
-  String _monthLabel() {
+  String _monthLabel(DateTime month) {
     const months = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6',
                     'Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
-    return '${months[_focusedMonth.month - 1]}, ${_focusedMonth.year}';
+    return '${months[month.month - 1]}, ${month.year}';
   }
 }
 

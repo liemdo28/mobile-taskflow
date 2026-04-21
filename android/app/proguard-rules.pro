@@ -20,6 +20,10 @@
 # Keep model classes
 -keep class com.taskflow.mobile.** { *; }
 
+# Google Play Core (suppress missing class warnings)
+-dontwarn com.google.android.play.core.**
+-keep class com.google.android.play.core.** { *; }
+
 # General Android
 -keepattributes Signature
 -keepattributes *Annotation*
