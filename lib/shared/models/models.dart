@@ -92,7 +92,7 @@ class Task {
       isCompleted: (json['is_completed'] as int?) == 1 || json['is_completed'] == true,
       completedAt: json['completed_at'] != null ? DateTime.tryParse(json['completed_at'] as String) : null,
       acceptedAt: json['accepted_at'] != null ? DateTime.tryParse(json['accepted_at'] as String) : null,
-      projectId: json['project_id'] as int,
+      projectId: (json['project_id'] as int?) ?? 0,
       sectionId: json['section_id'] as int?,
       assigneeId: json['assignee_id'] as int?,
       assigneeName: json['assignee_name'] as String?,
